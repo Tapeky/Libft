@@ -3,102 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 16:38:35 by tsadouk           #+#    #+#             */
-/*   Updated: 2023/11/09 16:38:35 by tsadouk          ###   ########.fr       */
+/*   Created: 2023/11/01 02:36:12 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/02 10:16:45 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	reverse_str(char *str, int start, int end)
+static int	get_number_len(long int n)
 {
-	char	temp;
+	int			res;
 
-	while (start < end)
+	res = 1;
+	if (n < 0)
 	{
-		temp = str[start];
-		str[start] = str[end];
-		str[end] = temp;
-		start++;
-		end--;
+		res++;
+		n *= -1;
 	}
-}
-
-int	count_digit(int n)
-{
-	int	digits;
-
-	digits = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
+	while (n > 9)
 	{
+		res++;
 		n /= 10;
-		digits++;
 	}
-	return (digits);
-}
-
-char	*negative(char *result, int n)
-{
-	int	i;
-
-	if (n == -2147483648)
-	{
-		result = (char *)ft_calloc(12, sizeof(char));
-		if (result == NULL)
-			return (NULL);
-		ft_strlcpy(result, "-2147483648", 12);
-		return (result);
-	}
-	i = 1;
-	result = (char *)malloc(sizeof(char) * (count_digit(n) + 2));
-	if (!result)
-		return (NULL);
-	result[0] = '-';
-	n = -n;
-	while (n > 0)
-	{
-		result[i] = '0' + (n % 10);
-		n /= 10;
-		i++;
-	}
-	reverse_str(result, 1, i - 1);
-	result[i] = '\0';
-	return (result);
-}
-
-char	*zero(char *result)
-{
-	result = (char *)malloc(sizeof(char) * 2);
-	if (!result)
-		return (NULL);
-	result[0] = '0';
-	result[1] = '\0';
-	return (result);
+	return (res);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*result;
-	int		i;
+	char		*res;
+	int			nb_len;
+	int			i;
+	long int	temp_nb;
 
-	result = NULL;
+	temp_nb = (long int)n;
+	nb_len = get_number_len(n);
+	res = malloc((nb_len + 1) * sizeof(char));
+	if (!res)
+		return (res);
 	i = 0;
-	if (n == 0)
-		return (zero(result));
-	if (n < 0)
-		return (negative(result, n));
-	result = (char *)ft_calloc((count_digit(n) + 1), sizeof(char));
-	if (result == NULL)
-		return (NULL);
-	while (n > 0)
+	if (temp_nb < 0)
 	{
-		result[i++] = '0' + (n % 10);
-		n /= 10;
+		res[0] = '-';
+		temp_nb *= -1;
 	}
-	reverse_str(result, 0, i - 1);
-	return (result);
+	while (temp_nb > 9)
+	{
+		res[nb_len - i - 1] = (temp_nb % 10) + '0';
+		temp_nb /= 10;
+		i++;
+	}
+	res[nb_len - i - 1] = temp_nb + '0';
+	res[nb_len] = 0;
+	return (res);
 }

@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 16:35:30 by tomoron           #+#    #+#             */
-/*   Updated: 2023/11/02 01:13:21 by tomoron          ###   ########.fr       */
+/*   Created: 2023/11/01 04:10:53 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/05 15:51:33 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+size_t	ft_putchar(char c)
 {
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	write(1, &c, 1);
+	return (1);
 }

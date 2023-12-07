@@ -3,43 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 14:18:26 by tsadouk           #+#    #+#             */
-/*   Updated: 2023/11/09 14:18:26 by tsadouk          ###   ########.fr       */
+/*   Created: 2023/07/24 18:06:14 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/02 10:26:09 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	precheck(const char *s1, const char *s2)
+static int	calc_str_len(char const *s1, char const *s2)
 {
-	return (s1 == NULL || s2 == NULL);
+	int	res;
+	int	i;
+
+	res = 0;
+	i = 0;
+	while (s1[i])
+	{
+		i++;
+		res++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		i++;
+		res++;
+	}
+	return (res);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		total_len;
+	char	*res;
+	int		len;
 	int		i;
-	int		index;
-	char	*result;
+	int		j;
 
-	if (precheck(s1, s2))
-		return (NULL);
-	total_len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
-	result = (char *)malloc(sizeof(char) * (total_len + 1));
-	if (result == NULL)
-		return (NULL);
-	i = -1;
-	while (s1[++i])
-		result[i] = s1[i];
-	index = i;
-	i = -1;
-	while (s2[++i])
+	j = 0;
+	if (!s1 || !s2)
+		return (0);
+	len = calc_str_len(s1, s2);
+	res = malloc((len + 1) * sizeof(char));
+	while (res && s1[j])
 	{
-		result[index] = s2[i];
-		index++;
+		res[j] = s1[j];
+		j++;
 	}
-	result[index] = '\0';
-	return (result);
+	i = 0;
+	while (res && s2[i])
+	{
+		res[j] = s2[i];
+		i++;
+		j++;
+	}
+	if (res)
+		res[j] = 0;
+	return (res);
 }

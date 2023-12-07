@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memove.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 14:13:54 by tsadouk           #+#    #+#             */
-/*   Updated: 2023/11/09 14:13:54 by tsadouk          ###   ########.fr       */
+/*   Created: 2023/10/30 13:20:17 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/02 10:23:24 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
+#include "libft.h" 
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
+	unsigned int	i;
 	unsigned char	*d;
 	unsigned char	*s;
 
-	if (dest == 0 && src == 0 && n > 0)
-		return (0);
-	d = dest;
-	s = (unsigned char *)src;
-	if (d < s)
+	d = (unsigned char *) dest;
+	s = (unsigned char *) src;
+	i = 0;
+	while (i < n && d && s)
 	{
-		while (n)
-		{
-			*d = *s;
-			n--;
-			d++;
-			s++;
-		}
-	}
-	else
-	{
-		while (n--)
-			d[n] = s[n];
+		if (d > s)
+			d[n - i - 1] = s[n - i - 1];
+		else
+			d[i] = s[i];
+		i++;
 	}
 	return (dest);
 }

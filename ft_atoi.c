@@ -3,38 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 14:04:35 by tsadouk           #+#    #+#             */
-/*   Updated: 2023/11/09 14:56:20 by tsadouk          ###   ########.fr       */
+/*   Created: 2023/07/17 13:41:15 by tomoron           #+#    #+#             */
+/*   Updated: 2023/10/31 15:35:21 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	sum;
+	int	res;
+	int	inv;
 
-	sum = 0;
-	i = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	res = 0;
+	inv = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		if (*str == '-')
+			inv *= -1;
+		str++;
 	}
-	while (str[i] != '\0')
+	while (*str >= '0' && *str <= '9')
 	{
-		if (!(str[i] - '0' >= 0 && str[i] - '0' <= 9))
-			return (sum * sign);
-		sum = sum * 10 + str[i] - '0';
-		i++;
+		res *= 10;
+		res += *str - '0';
+		str++;
 	}
-	return (sum * sign);
+	return (res * inv);
 }

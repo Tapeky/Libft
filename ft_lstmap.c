@@ -3,35 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 14:08:57 by tsadouk           #+#    #+#             */
-/*   Updated: 2023/11/09 14:08:57 by tsadouk          ###   ########.fr       */
+/*   Created: 2023/11/01 17:29:05 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/02 11:47:05 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_list;
+	t_list	*res;
 	t_list	*current;
-	t_list	*new_elem;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	new_list = NULL;
-	current = lst;
-	while (current != NULL)
+	if (!lst)
+		return (0);
+	res = malloc(sizeof(t_list));
+	if (!res)
+		return (0);
+	res -> content = f(lst->content);
+	lst = lst->next;
+	current = res;
+	while (lst)
 	{
-		new_elem = ft_lstnew(f(current->content));
-		if (!new_elem)
+		current->next = malloc(sizeof(t_list));
+		if (!current->next)
 		{
-			ft_lstclear(&new_list, del);
-			return (NULL);
+			ft_lstclear(&res, del);
+			return (0);
 		}
-		ft_lstadd_back(&new_list, new_elem);
 		current = current->next;
+		current->content = f(lst->content);
+		lst = lst->next;
 	}
-	return (new_list);
+	current->next = NULL;
+	return (res);
 }

@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_write_str_part.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 16:35:30 by tomoron           #+#    #+#             */
-/*   Updated: 2023/11/02 01:13:21 by tomoron          ###   ########.fr       */
+/*   Created: 2023/11/03 11:16:38 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/05 15:50:41 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+#include "ft_printf.h"
+
+size_t	ft_write_str_part(char **s)
 {
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	size_t	i;
+
+	i = 0;
+	while ((*s)[i] != '%' && (*s)[i])
+		i++;
+	if (i)
+		write(1, *s, i);
+	*s += i;
+	return (i);
 }

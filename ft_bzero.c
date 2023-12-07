@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bezero.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsadouk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 13:54:11 by tsadouk           #+#    #+#             */
-/*   Updated: 2023/11/09 13:54:13 by tsadouk          ###   ########.fr       */
+/*   Created: 2023/10/30 12:39:29 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/02 10:41:24 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t			i;
-	unsigned char	*us;
+	unsigned long int	i;
+	char				*ptr;
 
-	us = s;
+	ptr = (char *)s;
 	i = 0;
 	while (i < n)
 	{
-		us[i] = 0;
+		ptr[i] = 0;
 		i++;
 	}
 }

@@ -3,33 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tomoron <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 14:22:18 by tsadouk           #+#    #+#             */
-/*   Updated: 2023/11/09 14:22:18 by tsadouk          ###   ########.fr       */
+/*   Created: 2023/10/31 11:59:20 by tomoron           #+#    #+#             */
+/*   Updated: 2023/11/02 11:00:04 by tomoron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
+#include "libft.h" 
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*result;
+	unsigned int	i;
+	char			*res;
+	unsigned int	res_len;
 
-	result = NULL;
-	if (s == NULL)
-		return (NULL);
-	if (ft_strlen(s) < len + start)
-		len = ft_strlen(s) - start;
-	if ((size_t)start >= ft_strlen(s))
+	res_len = 0;
+	if (!s)
+		return (0);
+	if (ft_strlen(s) > start)
+		while (res_len < len && s[start + res_len])
+			res_len++;
+	res = malloc((res_len + 1) * sizeof(char));
+	if (!res)
+		return (res);
+	i = 0;
+	while (i < res_len)
 	{
-		result = ft_calloc(1, sizeof(char));
-		return (result);
+		res[i] = s[start + i];
+		i++;
 	}
-	result = (char *)malloc(sizeof(char) * len + 1);
-	if (result == NULL)
-		return (NULL);
-	ft_memcpy(result, (unsigned char *) s + start, len);
-	result[len] = '\0';
-	return (result);
+	res[i] = 0;
+	return (res);
 }
