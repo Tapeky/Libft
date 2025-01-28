@@ -1,4 +1,4 @@
-```markdown
+
 # 📚 Libft
 
 **Libft** est une bibliothèque personnelle en C regroupant des fonctions utilitaires pour la manipulation de chaînes, de mémoire, de listes chaînées, et plus encore.  
@@ -12,7 +12,7 @@ Ce projet est réalisé dans le cadre du cursus de l'école **42**.
 ```bash
 git clone https://github.com/<votre-utilisateur>/libft.git
 cd libft
-```
+
 
 2. Compilez la bibliothèque :
 ```bash
