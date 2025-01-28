@@ -10,7 +10,7 @@ Ce projet est réalisé dans le cadre du cursus de l'école **42**.
 
 1. Clonez le dépôt :
 ```bash
-git clone https://github.com/<votre-utilisateur>/libft.git
+git clone https://github.com/Tapeky/Libft.git
 cd libft
 
 
