@@ -13,7 +13,7 @@ Ce projet est réalisé dans le cadre du cursus de l'école **42**.
 git clone https://github.com/Tapeky/Libft.git
 cd libft
 
-
+```
 2. Compilez la bibliothèque :
 ```bash
 make
