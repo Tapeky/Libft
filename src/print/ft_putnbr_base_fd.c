@@ -6,7 +6,7 @@
 /*   By: tsadouk <tsadouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 14:51:38 by tsadouk           #+#    #+#             */
-/*   Updated: 2024/03/22 14:54:05 by tsadouk          ###   ########.fr       */
+/*   Updated: 2025/01/28 23:13:51 by tsadouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,3 @@ int	ft_putnbr_base_fd(long n, char *base, int fd)
 		count += ft_putchar_fd(n + '0', fd);
 	return (count);
 }
-
