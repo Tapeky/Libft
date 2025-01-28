@@ -100,11 +100,6 @@ gcc -Wall -Wextra -Werror -I. -L. -lft exemple.c -o exemple && ./exemple
 
 ---
 
-## 📜 Licence  
-Ce projet suit les directives de l'école 42. Consultez le fichier `LICENSE` pour plus de détails.
-
----
-
 ## 👨💻 Auteur  
 **tsadouk**  
 [✉️ tsadouk@student.42angouleme.fr](mailto:tsadouk@42angouleme.fr)  
