@@ -83,6 +83,10 @@ static void to_upper(unsigned int i, char *c) {
 
 int main(void) {
     char *str = ft_strdup("Libft est géniale !");
+    if (!str) {
+        ft_putstr_fd("Error\n", 2);
+        return 1;
+    }
     
     printf("Longueur : %zu\n", ft_strlen(str)); // 18
     ft_striteri(str, to_upper);
