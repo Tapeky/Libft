@@ -107,5 +107,5 @@ Ce projet suit les directives de l'école 42. Consultez le fichier `LICENSE` pou
 
 ## 👨💻 Auteur  
 **tsadouk**  
-[✉️ tsadouk@student.42.fr](mailto:tsadouk@student.42.fr)  
+[✉️ tsadouk@student.42angouleme.fr](mailto:tsadouk@42angouleme.fr)  
 Étudiant à **42** | Angouleme, France
